@@ -93,7 +93,7 @@ model.summary()
 lr = callbacks.LearningRateScheduler(schedule = alr, verbose = 0)
 
 #   Train the network
-history = model.fit(X_train, y_train, epochs = 1, verbose = True, validation_data = (X_test, y_test), batch_size = 64, callbacks = [lr])
+history = model.fit(X_train, y_train, epochs = 50, verbose = True, validation_data = (X_test, y_test), batch_size = 64, callbacks = [lr])
 
 #   Evaluate the CNN in training-set
 train_loss, train_accuracy = model.evaluate(X_train, y_train, verbose = True)
