@@ -57,8 +57,11 @@ X_test = pad_sequences(X_test, padding = "post", maxlen = maxlen)
 
 #   In this project I used Word2Vec embedding pre-trained by myself. You can use a personal embedding
 embedding_dim = 128
-embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
+
+#################################################### If you want use a Word2Vec model... ####################################################
+'''
 model = gensim.models.Word2Vec.load("word2vec.model")
+embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
 
 #   Set the word-weight computed by Word2Vec model in weights-matrix
 for word, i in word_index.items():
@@ -67,11 +70,13 @@ for word, i in word_index.items():
     except KeyError:
         embedding_vector = [0] * embedding_dim
     embedding_matrix[i] = embedding_vector
-
+'''
+#############################################################################################################################################
 #   Construct the Convolutional Neural Network
 #   In Convolutional Layer we use kernel and bias regularizer for limit the overfitting
 model = Sequential()
-model.add(Embedding(vocab_size, embedding_dim, input_length = maxlen, weights = [embedding_matrix], trainable = False)) # This first layer create the sentence-matrix for convolutional operation
+model.add(Embedding(vocab_size, embedding_dim, input_length = maxlen, trainable = True)) # This first layer create the sentence-matrix for convolutional operation
+#model.add(Embedding(vocab_size, embedding_dim, input_length = maxlen, weights = [embedding_matrix], trainable = False)) # If you use a Word2Vec model, add "weights" parameter
 model.add(Conv1D(64, 2, activation = 'relu', strides = 1, padding = 'same', kernel_regularizer = l2(0.05), bias_regularizer = l2(0.05)))
 model.add(MaxPooling1D())
 model.add(Conv1D(512, 2, activation = 'relu', strides = 1, padding = 'same', kernel_regularizer = l2(0.05), bias_regularizer = l2(0.05)))
