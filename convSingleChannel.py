@@ -75,7 +75,7 @@ for word, i in word_index.items():
 #   Construct the Convolutional Neural Network
 #   In Convolutional Layer we use kernel and bias regularizer for limit the overfitting
 model = Sequential()
-model.add(Embedding(vocab_size, embedding_dim, input_length = maxlen, trainable = True)) # This first layer create the sentence-matrix for convolutional operation
+model.add(Embedding(vocab_size, embedding_dim, input_length = maxlen, trainable = False)) # This first layer create the sentence-matrix for convolutional operation
 #model.add(Embedding(vocab_size, embedding_dim, input_length = maxlen, weights = [embedding_matrix], trainable = False)) # If you use a Word2Vec model, add "weights" parameter
 model.add(Conv1D(64, 2, activation = 'relu', strides = 1, padding = 'same', kernel_regularizer = l2(0.05), bias_regularizer = l2(0.05)))
 model.add(MaxPooling1D())
