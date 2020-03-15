@@ -30,7 +30,7 @@ from keras import callbacks
 
 #   Dataset contains cleaned sentences and 9 hand-crafted features. With "usecols" parameter, I choose which features in the .csv file use in this neural network
 #   The explanation of every features is showed in the below code
-training = np.genfromtxt('data_clean_with_feat.csv',encoding = "utf8", delimiter = ',', skip_header = 0, usecols=(2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11), dtype=None, invalid_raise = False)
+training = np.genfromtxt('../data_clean_with_feat.csv',encoding = "utf8", delimiter = ',', skip_header = 0, usecols=(2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11), dtype=None, invalid_raise = False)
 
 #   Save all the hand-crafted features value in list
 #   All the hand-crafted features are calculater by me with some scripts. You can calculate all the features you want and how you want. They are called "hand-crafted" because are choosen and calculated by the programmator
@@ -67,8 +67,8 @@ train_x10 = []
 ############### Use a Word2Vec model for calculate sum and average value of every sentence ##############
 import gensim
 cc = 0
-model = gensim.models.Word2Vec.load("word2vec2final.model")
-modelvec = gensim.models.Word2Vec.load("word2vec2final.model")
+model = gensim.models.Word2Vec.load("../word2vec2final.model")
+modelvec = gensim.models.Word2Vec.load("../word2vec2final.model")
 for idx,val in enumerate(train_x):
     vettoreMedia = []
     vettoreSomma = []
