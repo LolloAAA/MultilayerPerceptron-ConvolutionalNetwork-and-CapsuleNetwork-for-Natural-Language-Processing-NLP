@@ -40,7 +40,7 @@ from matplotlib import pyplot as plt
 def lambda1(epoch):
     return 0.001 * np.exp(-epoch / 10.)
 
-training = np.genfromtxt('data_clean.csv', encoding = "utf8", delimiter = ';', skip_header = 0, usecols = (1,2), dtype = None, invalid_raise = False)
+training = np.genfromtxt('../data_clean.csv', encoding = "utf8", delimiter = ';', skip_header = 0, usecols = (1,2), dtype = None, invalid_raise = False)
 
 X = np.asarray([str(x[0]) for x in training])
 y = np.asarray([str(x[1]) for x in training])
@@ -64,7 +64,7 @@ embedding_dim = 128
 
 embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
 
-model = gensim.models.Word2Vec.load("word2vec2final.model")
+model = gensim.models.Word2Vec.load("../word2vec2final.model")
 
 for word, i in word_index.items():
     try:
