@@ -64,7 +64,7 @@ embedding_dim = 128
 
 embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
 
-model = gensim.models.Word2Vec.load("../word2vec2final.model")
+model = gensim.models.Word2Vec.load("../word2vec.model")
 
 for word, i in word_index.items():
     try:
