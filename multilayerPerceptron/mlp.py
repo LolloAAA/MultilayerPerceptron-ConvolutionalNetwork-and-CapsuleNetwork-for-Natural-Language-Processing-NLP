@@ -67,8 +67,8 @@ train_x10 = []
 ############### Use a Word2Vec model for calculate sum and average value of every sentence ##############
 import gensim
 cc = 0
-model = gensim.models.Word2Vec.load("../word2vec2final.model")
-modelvec = gensim.models.Word2Vec.load("../word2vec2final.model")
+model = gensim.models.Word2Vec.load("../word2vec.model")
+modelvec = gensim.models.Word2Vec.load("../word2vec.model")
 for idx,val in enumerate(train_x):
     vettoreMedia = []
     vettoreSomma = []
