@@ -33,7 +33,7 @@ def train(model, train, dev, test, optimizer, epoch, batch_size, schedule):
     model.summary()
 
     history = model.fit(x = X_train, y = Y_train, validation_data = [X_val, Y_val], batch_size = batch_size, epochs = epoch, callbacks = [lr_decay], shuffle = True, verbose = True)
-    loss, accuracy = model.evaluate(X_test, Y_test, verbose = False, batch_size = batch_size)
+    loss, accuracy = model.evaluate(X_test, Y_test, verbose = True, batch_size = batch_size)
     print("Testing Accuracy:  {:.4f}".format(accuracy))
 
 
@@ -41,7 +41,7 @@ def train(model, train, dev, test, optimizer, epoch, batch_size, schedule):
 
 if __name__ == "__main__":
     #   Get dataset and save in "training"
-    training = np.genfromtxt('../data_train.csv', encoding = "utf8", delimiter = ';', skip_header = 0, usecols = (1,2), dtype = None, invalid_raise = False)
+    training = np.genfromtxt('../data_clean.csv', encoding = "utf8", delimiter = ';', skip_header = 0, usecols = (1,2), dtype = None, invalid_raise = False)
     
     X = np.asarray([str(x[0]) for x in training])   # Cleaned sentences
     y = np.asarray([str(x[1]) for x in training])   # Labels
